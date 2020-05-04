@@ -28,16 +28,16 @@ print("Input the number of centroids  when the workers are ready: ")
 k = raw_input()
 print("Sending tasks to workers…")
 
-numberPoints = 150
-segment = 3
-dimensions = 4
+numberPoints = 205
+dimensions = 17770
+intervals = 70
 
 # The first message is "0" and signals start of batch
 sink.send_string(json.dumps([k,dimensions, numberPoints]))
 
 
 def generateCentroid(start, end, size):
-	return [random.uniform(start, end) for i in range(size)]
+	return [ random.randint(start, end) for i in range(size)]
 
 def readFile(nameFile):
 	with open(nameFile) as file:
@@ -55,7 +55,7 @@ def work(sizeData, numberIntervals, centroids):
 		sender.send_string(json.dumps(task))
 
 numberIterations = 0
-work(numberPoints,50, [ generateCentroid(-3 , 3, dimensions) for i in range(int(k))])
+work(numberPoints,intervals, [ generateCentroid(1 , 5, dimensions) for i in range(int(k))])
 numberIterations += 1
 
 
