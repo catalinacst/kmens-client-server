@@ -55,3 +55,7 @@ while numberIterations < 3:
 	numberIterations += 1
 
 
+# k: [ 2, 3, 4, 5, 6, 7, 8, 9, .. n] 
+# x = k , y = sum( ||vi - ui||^2 )
+#
+#
